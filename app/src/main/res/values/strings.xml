@@ -1,0 +1,49 @@
+<resources>
+    <!-- Application name -->
+    <string name="app_name">StoryApp</string>
+
+    <!-- Login screen -->
+    <string name="login">LOGIN</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="dont_hv_acc">Don\'t have an Account ? Register</string>
+    <string name="hv_acc">Have an Account ? Login</string>
+    <string name="login_error">An error occurred while logging in. Please try again later.</string>
+    <string name="password_min_length">Password Minimum Length is 8</string>
+
+    <!-- Registration screen -->
+    <string name="name">Name</string>
+    <string name="description">Description</string>
+    <string name="register">Register</string>
+    <string name="invalid_email">Invalid Email Addresss</string>
+    <string name="register_error">An error occurred while registering. Please try again later.</string>
+    <string name="hint_name">Enter your name</string>
+    <string name="min_name">Name Minimum Length is 4</string>
+
+    <!-- Home screen -->
+    <string name="logout">LogOut</string>
+    <string name="add">Add</string>
+    <string name="upload">Upload</string>
+    <string name="camera_x">Camera X</string>
+    <string name="gallery">Gallery</string>
+    <string name="profile">profile</string>
+    <string name="select_image">Please Select Image First</string>
+    <string name="switch_camera">Switch Camera</string>
+    <string name="success_upload">Success Upload</string>
+
+    <!-- Error messages -->
+    <string name="failed_take_picture">Failed to Take Picture</string>
+    <string name="failed_open_camera">Failed to Open Camera</string>
+    <string name="doesnt_get_permission">Doesn\'t Get Permission</string>
+    <string name="fill_in">Please Fill In</string>
+    <string name="choose_picture">Choose a Picture</string>
+    <string name="failed_retrofit">Failed Retrofit Instance</string>
+    <string name="failed_camera">Failed to Open Camera</string>
+
+    <!-- Miscellaneous -->
+    <string name="language">Language</string>
+    <string name="logo">logo</string>
+    <string name="image">image</string>
+    <string name="lat_long">Latitude and Longitude</string>
+
+</resources>

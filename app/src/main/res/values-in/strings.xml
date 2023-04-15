@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Nama aplikasi -->
+    <string name="app_name">StoryApp</string>
+
+    <!-- Layar masuk -->
+    <string name="login">MASUK</string>
+    <string name="email">Email</string>
+    <string name="password">Kata sandi</string>
+    <string name="dont_hv_acc">Belum punya akun? Daftar</string>
+    <string name="hv_acc">Sudah punya akun? Masuk</string>
+    <string name="login_error">Terjadi kesalahan saat masuk. Silakan coba lagi nanti.</string>
+    <string name="password_min_length">Panjang kata sandi minimal 8 karakter</string>
+
+    <!-- Layar pendaftaran -->
+    <string name="name">Nama</string>
+    <string name="description">Deskripsi</string>
+    <string name="register">Daftar</string>
+    <string name="invalid_email">Alamat email tidak valid</string>
+    <string name="register_error">Terjadi kesalahan saat register. Silakan coba lagi nanti.</string>
+    <string name="hint_name">Masukkan nama Anda</string>
+    <string name="min_name">Panjang nama minimal 4 karakter</string>
+
+    <!-- Layar utama -->
+    <string name="logout">Keluar</string>
+    <string name="add">Tambah</string>
+    <string name="upload">Unggah</string>
+    <string name="camera_x">Kamera X</string>
+    <string name="gallery">Galeri</string>
+    <string name="profile">Profil</string>
+    <string name="select_image">Pilih gambar terlebih dahulu</string>
+    <string name="switch_camera">Ganti kamera</string>
+    <string name="success_upload">Berhasil mengunggah</string>
+
+    <!-- Pesan kesalahan -->
+    <string name="failed_take_picture">Gagal mengambil gambar</string>
+    <string name="failed_open_camera">Gagal membuka kamera</string>
+    <string name="doesnt_get_permission">Tidak mendapat izin</string>
+    <string name="fill_in">Harap isi semua</string>
+    <string name="choose_picture">Pilih gambar</string>
+    <string name="failed_retrofit">Gagal membuat instance Retrofit</string>
+    <string name="failed_camera">Gagal membuka kamera</string>
+
+    <!-- Lain-lain -->
+    <string name="language">Bahasa</string>
+    <string name="logo">logo</string>
+    <string name="image">gambar</string>
+    <string name="lat_long">Latitude dan Longitude</string>
+
+</resources>
