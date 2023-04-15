@@ -29,6 +29,8 @@ class MainViewModel(private val pref: Session) : ViewModel() {
     val listStory: LiveData<List<ListStoryItem>> = _listStory
     private val _message = MutableLiveData<String>()
     val message: LiveData<String> = _message
+    private val _acceptance = MutableLiveData<Boolean>()
+    val acceptance: LiveData<Boolean> = _acceptance
 
     fun getAllStories(token: String) {
         _isLoading.value = true
@@ -44,6 +46,7 @@ class MainViewModel(private val pref: Session) : ViewModel() {
                     _listStory.value = response.body()?.listStory as List<ListStoryItem>?
                 } else {
                     _message.value = response.message()
+                    _acceptance.value = false
                 }
             }
 

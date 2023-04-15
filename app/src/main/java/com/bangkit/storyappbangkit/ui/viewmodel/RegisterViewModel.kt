@@ -51,7 +51,7 @@ class RegisterViewModel (private val pref: Session) : ViewModel(){
                     _acceptance.value = true
                 } else {
                     _message.value = response.message()
-                    Log.e(TAG, "onFailure: ${response.message()}")
+                    _acceptance.value = false
                 }
             }
 

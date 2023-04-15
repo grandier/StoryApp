@@ -70,6 +70,14 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        mainViewModel.acceptance.observe(this) {
+            if (it) {
+                Toast.makeText(this, R.string.success, Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, R.string.error, Toast.LENGTH_SHORT).show()
+            }
+        }
+
         binding.btnADD.setOnClickListener {
             val intent = Intent(this, AddStoriesActivity::class.java)
             startActivity(intent)

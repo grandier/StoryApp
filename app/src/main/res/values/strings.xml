@@ -45,5 +45,7 @@
     <string name="logo">logo</string>
     <string name="image">image</string>
     <string name="lat_long">Latitude and Longitude</string>
+    <string name="error">Error</string>
+    <string name="success">Success</string>
 
 </resources>

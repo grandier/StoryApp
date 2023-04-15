@@ -46,5 +46,7 @@
     <string name="logo">logo</string>
     <string name="image">gambar</string>
     <string name="lat_long">Latitude dan Longitude</string>
+    <string name="error">Kesalahan</string>
+    <string name="success">Berhasil</string>
 
 </resources>

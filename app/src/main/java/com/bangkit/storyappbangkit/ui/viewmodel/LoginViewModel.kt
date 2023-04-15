@@ -33,14 +33,12 @@ class LoginViewModel(private val pref: Session) : ViewModel() {
         }
     }
 
-
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
     private val _acceptance = MutableLiveData<Boolean>()
     val acceptance: LiveData<Boolean> = _acceptance
     private val _message = MutableLiveData<String>()
     val message: LiveData<String> = _message
-
 
     init{
         _acceptance.value = false
