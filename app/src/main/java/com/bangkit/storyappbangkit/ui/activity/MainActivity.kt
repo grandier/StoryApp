@@ -16,10 +16,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.storyappbangkit.R
 import com.bangkit.storyappbangkit.data.local.Session
-import com.bangkit.storyappbangkit.data.remote.model.ListStoryItem
+import com.bangkit.storyappbangkit.data.paging.adapter.LoadingStateAdapter
 import com.bangkit.storyappbangkit.databinding.ActivityMainBinding
 import com.bangkit.storyappbangkit.ui.activity.stories.AddStoriesActivity
-import com.bangkit.storyappbangkit.ui.activity.stories.StoryAdapter
+import com.bangkit.storyappbangkit.data.paging.adapter.StoryAdapter
 import com.bangkit.storyappbangkit.ui.viewmodel.MainViewModel
 import com.bangkit.storyappbangkit.ui.viewmodel.ViewModelFactory
 
@@ -38,25 +38,23 @@ class MainActivity : AppCompatActivity() {
         val pref = Session.getInstance(dataStore)
 
         mainViewModel = ViewModelProvider(
-            this, ViewModelFactory(pref)
+            this, ViewModelFactory(pref, this)
         )[MainViewModel::class.java]
 
-        mainViewModel.getToken().observe(this) { token ->
+        mainViewModel.getToken().observe(this) { token: String ->
             if (token.isNotEmpty()) {
-                mainViewModel.getAllStories(token)
+                getStoryPage(token)
 
             } else if(token.isEmpty()) {
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
                 finish()
-            } else {
-                mainViewModel.getAllStories(token)
             }
         }
 
-        mainViewModel.listStory.observe(this) { listStory ->
-            showStories(listStory)
-        }
+//        mainViewModel.listStory.observe(this) { listStory ->
+//            showStories(listStory)
+//        }
 
         mainViewModel.isLoading.observe(this) { isLoading ->
             showLoading(isLoading)
@@ -84,15 +82,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         Log.d("MainAcitivy", "Haloo $pref")
+
+        Log.d("MainAcitivy", "Haloo2 ${mainViewModel.getToken()}")
     }
 
-    private fun showStories(stories: List<ListStoryItem>) {
-        binding.rvStories.apply {
-            setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(this@MainActivity)
-            adapter = StoryAdapter(ArrayList(stories))
-        }
-    }
+//    private fun showStories(stories: List<ListStoryItem>) {
+//        binding.rvStories.apply {
+//            setHasFixedSize(true)
+//            layoutManager = LinearLayoutManager(this@MainActivity)
+//            adapter = StoryAdapter(stories)
+//        }
+//    }
 
     private fun showLoading(isLoading: Boolean) {
         if (isLoading) {
@@ -135,4 +135,18 @@ class MainActivity : AppCompatActivity() {
         homeIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(homeIntent)
     }
+
+    private fun getStoryPage(token: String) {
+        val adapter = StoryAdapter()
+        binding.rvStories.layoutManager = LinearLayoutManager(this@MainActivity) // Set the LinearLayoutManager
+        binding.rvStories.adapter = adapter.withLoadStateFooter(
+            footer = LoadingStateAdapter {
+                adapter.retry()
+            }
+        )
+        mainViewModel.getStories(token).observe(this) { // Use viewLifecycleOwner for observing LiveData in a Fragment
+            adapter.submitData(lifecycle, it)
+        }
+    }
+
 }

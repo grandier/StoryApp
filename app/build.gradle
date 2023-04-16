@@ -79,8 +79,8 @@ dependencies {
     kapt 'androidx.room:room-compiler:2.4.2'
 
 // Paging for handling large data sets
-    implementation "androidx.paging:paging-runtime-ktx:3.1.1"
     implementation 'androidx.room:room-paging:2.5.0-alpha01'
+    implementation "androidx.paging:paging-runtime-ktx:3.1.0"
 
 // Google Maps for maps and location services
     implementation 'com.google.android.gms:play-services-maps:18.0.2'

@@ -51,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
 
         // Initialize the LoginViewModel
         loginViewModel = ViewModelProvider(
-            this, ViewModelFactory(pref)
+            this, ViewModelFactory(pref, this)
         )[LoginViewModel::class.java]
 
         if (!intent.getStringExtra("email").isNullOrEmpty()) {

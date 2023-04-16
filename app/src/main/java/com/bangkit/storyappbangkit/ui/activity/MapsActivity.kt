@@ -46,7 +46,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val pref = Session.getInstance(dataStore)
 
         mapsViewModel = ViewModelProvider(
-            this, ViewModelFactory(pref)
+            this, ViewModelFactory(pref, this)
         )[MapsViewModel::class.java]
 
         mapsViewModel.getToken().observe(this) { token ->

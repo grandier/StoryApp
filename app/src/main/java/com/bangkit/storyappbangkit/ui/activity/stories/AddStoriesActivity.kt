@@ -102,7 +102,7 @@ class AddStoriesActivity : AppCompatActivity() {
 
         val pref = Session.getInstance(dataStore)
         addStoryViewModel =
-            ViewModelProvider(this, ViewModelFactory(pref))[AddStoriesViewModel::class.java]
+            ViewModelProvider(this, ViewModelFactory(pref, this))[AddStoriesViewModel::class.java]
 
         if (!allPermissionsGranted()) {
             ActivityCompat.requestPermissions(

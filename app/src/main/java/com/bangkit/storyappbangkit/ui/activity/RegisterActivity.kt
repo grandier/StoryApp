@@ -53,7 +53,7 @@ class RegisterActivity : AppCompatActivity() {
         val pref = Session.getInstance(dataStore)
 
         registerViewModel = ViewModelProvider(
-            this, ViewModelFactory(pref)
+            this, ViewModelFactory(pref, this)
         )[RegisterViewModel::class.java]
 
         if (!intent.getStringExtra("name").isNullOrEmpty()) {

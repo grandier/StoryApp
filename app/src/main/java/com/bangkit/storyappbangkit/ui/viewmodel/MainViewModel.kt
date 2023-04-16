@@ -1,7 +1,11 @@
 package com.bangkit.storyappbangkit.ui.viewmodel
 
+import android.content.Context
 import androidx.lifecycle.*
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.bangkit.storyappbangkit.data.local.Session
+import com.bangkit.storyappbangkit.data.paging.StoryRepository
 import com.bangkit.storyappbangkit.data.remote.api.ApiConfig
 import com.bangkit.storyappbangkit.data.remote.model.GetStory
 import com.bangkit.storyappbangkit.data.remote.model.ListStoryItem
@@ -10,7 +14,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainViewModel(private val pref: Session) : ViewModel() {
+class MainViewModel(private val pref: Session, private val storyRepository: StoryRepository) : ViewModel() {
     fun getToken(): LiveData<String> {
         return pref.getToken().asLiveData()
     }
@@ -34,7 +38,7 @@ class MainViewModel(private val pref: Session) : ViewModel() {
 
     fun getAllStories(token: String) {
         _isLoading.value = true
-        val client = ApiConfig.getApiService().getAllStories("Bearer $token", 1, 100, 0)
+        val client = ApiConfig.getApiService().getAllStories("Bearer $token", 1, 100,)
         client.enqueue(object : Callback<GetStory> {
             override fun onResponse(
                 call: Call<GetStory>,
@@ -57,7 +61,10 @@ class MainViewModel(private val pref: Session) : ViewModel() {
         })
     }
 
-    fun clearToken() {
+    fun getStories(token: String): LiveData<PagingData<ListStoryItem>> =
+        storyRepository.getStory(token).cachedIn(viewModelScope)
+
+    private fun clearToken() {
         viewModelScope.launch {
             pref.clearToken()
         }

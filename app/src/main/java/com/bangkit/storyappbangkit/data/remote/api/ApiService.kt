@@ -1,9 +1,6 @@
 package com.bangkit.storyappbangkit.data.remote.api
 
-import com.bangkit.storyappbangkit.data.remote.model.AddStory
-import com.bangkit.storyappbangkit.data.remote.model.GetStory
-import com.bangkit.storyappbangkit.data.remote.model.Login
-import com.bangkit.storyappbangkit.data.remote.model.Register
+import com.bangkit.storyappbangkit.data.remote.model.*
 import com.google.gson.annotations.SerializedName
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -39,8 +36,14 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Query("page") page: Int,
         @Query("size") size: Int,
-        @Query("location") location: Int
     ): Call<GetStory>
+
+    @GET("stories")
+    suspend fun getAllStoriesPage(
+        @Header("Authorization") token: String,
+        @Query("page") page: Int,
+        @Query("size") size: Int,
+    ): GetStory
 
     @GET("stories")
     fun getStoriesWithLocation(
