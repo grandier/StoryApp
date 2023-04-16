@@ -121,6 +121,10 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }
+            R.id.map -> {
+                val intent = Intent(this, MapsActivity::class.java)
+                startActivity(intent)
+            }
         }
         return super.onOptionsItemSelected(item)
     }

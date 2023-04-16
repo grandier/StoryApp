@@ -41,4 +41,10 @@ interface ApiService {
         @Query("size") size: Int,
         @Query("location") location: Int
     ): Call<GetStory>
+
+    @GET("stories")
+    fun getStoriesWithLocation(
+        @Header("Authorization") token: String,
+        @Query("location") location: Int
+    ): Call<GetStory>
 }

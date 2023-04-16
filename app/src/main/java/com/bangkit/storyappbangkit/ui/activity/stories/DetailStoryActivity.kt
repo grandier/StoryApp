@@ -1,5 +1,6 @@
 package com.bangkit.storyappbangkit.ui.activity.stories
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -7,6 +8,7 @@ import android.view.MenuItem
 import com.bangkit.storyappbangkit.R
 import com.bangkit.storyappbangkit.data.remote.model.ListStoryItem
 import com.bangkit.storyappbangkit.databinding.ActivityDetailStoryBinding
+import com.bangkit.storyappbangkit.ui.activity.MapsActivity
 import com.bumptech.glide.Glide
 
 class DetailStoryActivity : AppCompatActivity() {
@@ -43,6 +45,11 @@ class DetailStoryActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.action_back -> {
                 onBackPressed()
+                true
+            }
+            R.id.map -> {
+                val intent = Intent(this, MapsActivity::class.java)
+                startActivity(intent)
                 true
             }
             else -> super.onOptionsItemSelected(item)

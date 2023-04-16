@@ -4,6 +4,11 @@
 
     <group android:menuCategory="container">
         <item
+            android:id="@+id/map"
+            android:title="@string/title_activity_maps"
+            android:icon="@drawable/baseline_map_24"
+            app:showAsAction="always" />
+        <item
             android:id="@+id/action_back"
             android:title="Back"
             android:icon="@drawable/baseline_arrow_back_24"

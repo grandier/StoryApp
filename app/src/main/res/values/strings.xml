@@ -47,5 +47,6 @@
     <string name="lat_long">Latitude and Longitude</string>
     <string name="error">Error</string>
     <string name="success">Success</string>
+    <string name="title_activity_maps">MapsActivity</string>
 
 </resources>

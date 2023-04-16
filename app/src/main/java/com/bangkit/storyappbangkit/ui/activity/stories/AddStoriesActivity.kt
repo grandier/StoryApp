@@ -23,6 +23,7 @@ import com.bangkit.storyappbangkit.data.remote.api.ApiConfig
 import com.bangkit.storyappbangkit.data.remote.model.AddStory
 import com.bangkit.storyappbangkit.databinding.ActivityAddStoriesBinding
 import com.bangkit.storyappbangkit.ui.activity.MainActivity
+import com.bangkit.storyappbangkit.ui.activity.MapsActivity
 import com.bangkit.storyappbangkit.ui.activity.dataStore
 import com.bangkit.storyappbangkit.ui.utils.reduceFileImage
 import com.bangkit.storyappbangkit.ui.utils.rotateBitmap
@@ -233,6 +234,11 @@ class AddStoriesActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.action_back -> {
                 onBackPressed()
+                return true
+            }
+            R.id.map -> {
+                val intent = Intent(this, MapsActivity::class.java)
+                startActivity(intent)
                 return true
             }
             else -> return super.onOptionsItemSelected(item)
