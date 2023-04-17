@@ -78,12 +78,18 @@ class AddStoriesActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_CODE_PERMISSIONS) {
             if (!allPermissionsGranted()) {
-                Toast.makeText(
-                    this, getString(R.string.doesnt_get_permission), Toast.LENGTH_SHORT
-                ).show()
+                showText()
                 finish()
             }
         }
+    }
+
+    private fun showText() {
+        Toast.makeText(
+            this,
+            "Tidak mendapatkan permission.",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     private fun allPermissionsGranted(): Boolean {

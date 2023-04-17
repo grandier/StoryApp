@@ -47,6 +47,7 @@ class NameEditText : AppCompatEditText, View.OnTouchListener {
             }
 
             override fun afterTextChanged(s: Editable?) {
+                validateName(s)
             }
         })
     }

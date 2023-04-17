@@ -15,6 +15,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainViewModel(private val pref: Session, private val storyRepository: StoryRepository) : ViewModel() {
+
     fun getToken(): LiveData<String> {
         return pref.getToken().asLiveData()
     }
@@ -24,8 +25,6 @@ class MainViewModel(private val pref: Session, private val storyRepository: Stor
             pref.saveToken(token)
         }
     }
-
-    private var token: String = pref.getToken().toString()
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading

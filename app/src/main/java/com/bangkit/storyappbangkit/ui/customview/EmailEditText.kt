@@ -37,9 +37,6 @@ class EmailEditText : AppCompatEditText, View.OnTouchListener {
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         hint = "email@email.com"
-        textAlignment = View.TEXT_ALIGNMENT_VIEW_START
-        inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
-        maxLines = 1
     }
 
     private fun init() {

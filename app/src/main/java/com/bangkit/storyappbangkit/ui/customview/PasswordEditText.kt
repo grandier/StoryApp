@@ -34,9 +34,6 @@ class PasswordEditText : AppCompatEditText, View.OnTouchListener {
         super.onDraw(canvas)
         hint = "******"
         transformationMethod = PasswordTransformationMethod.getInstance()
-        inputType = InputType.TYPE_TEXT_VARIATION_PASSWORD
-        textAlignment = View.TEXT_ALIGNMENT_VIEW_START
-        maxLines = 1
     }
 
     private val pattern: Pattern = Pattern.compile(".{8,}")

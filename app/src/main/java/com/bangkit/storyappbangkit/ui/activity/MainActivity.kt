@@ -81,10 +81,25 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            mainViewModel.getToken().observe(this) { token: String ->
+                if (token.isNotEmpty()) {
+                    getStoryPage(token)
+                } else if(token.isEmpty()) {
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                binding.swipeRefreshLayout.isRefreshing = false
+            }
+        }
+
+
         Log.d("MainAcitivy", "Haloo $pref")
 
         Log.d("MainAcitivy", "Haloo2 ${mainViewModel.getToken()}")
     }
+
 
 //    private fun showStories(stories: List<ListStoryItem>) {
 //        binding.rvStories.apply {
