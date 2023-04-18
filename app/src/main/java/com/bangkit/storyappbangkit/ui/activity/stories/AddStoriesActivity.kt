@@ -3,6 +3,7 @@ package com.bangkit.storyappbangkit.ui.activity.stories
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
@@ -22,11 +23,11 @@ import com.bangkit.storyappbangkit.data.local.Session
 import com.bangkit.storyappbangkit.data.remote.api.ApiConfig
 import com.bangkit.storyappbangkit.data.remote.model.AddStory
 import com.bangkit.storyappbangkit.databinding.ActivityAddStoriesBinding
-import com.bangkit.storyappbangkit.ui.activity.MainActivity
 import com.bangkit.storyappbangkit.ui.activity.MapsActivity
 import com.bangkit.storyappbangkit.ui.activity.dataStore
 import com.bangkit.storyappbangkit.ui.utils.reduceFileImage
 import com.bangkit.storyappbangkit.ui.utils.rotateBitmap
+import com.bangkit.storyappbangkit.ui.utils.rotateFile
 import com.bangkit.storyappbangkit.ui.utils.uriToFile
 import com.bangkit.storyappbangkit.ui.viewmodel.AddStoriesViewModel
 import com.bangkit.storyappbangkit.ui.viewmodel.ViewModelFactory
@@ -38,6 +39,7 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.ByteArrayOutputStream
 import java.io.File
 
 class AddStoriesActivity : AppCompatActivity() {
@@ -169,6 +171,11 @@ class AddStoriesActivity : AppCompatActivity() {
         reduceFileImage(file)
         val text = binding.edDescription.text.toString().takeIf { it.isNotEmpty() } ?: " "
         val description = text.toRequestBody("text/plain".toMediaType())
+
+        // Rotate the file before uploading
+        rotateFile(file, isBackCamera = true)
+
+        // Create a MultipartBody.Part for uploading the image
         val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
         val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
             "photo",
@@ -177,7 +184,8 @@ class AddStoriesActivity : AppCompatActivity() {
         )
 
         addStoryViewModel.getToken().observe(this) { token ->
-            val service = ApiConfig.getApiService().uploadStories("Bearer $token", imageMultipart, description)
+            val service = ApiConfig.getApiService()
+                .uploadStories("Bearer $token", imageMultipart, description)
             service.enqueue(object : Callback<AddStory> {
                 override fun onResponse(
                     call: Call<AddStory>,
@@ -214,6 +222,8 @@ class AddStoriesActivity : AppCompatActivity() {
             })
         }
     }
+
+
 
     private fun showLoading(isLoading: Boolean) {
         binding.progressBar.apply {

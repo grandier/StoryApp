@@ -6,11 +6,13 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.liveData
 import com.bangkit.storyappbangkit.data.database.StoryDatabase
-import com.bangkit.storyappbangkit.data.local.Session
 import com.bangkit.storyappbangkit.data.remote.api.ApiService
 import com.bangkit.storyappbangkit.data.remote.model.ListStoryItem
 
-class StoryRepository(private val storyDatabase: StoryDatabase, private val apiService: ApiService) {
+class StoryRepository(
+    private val storyDatabase: StoryDatabase,
+    private val apiService: ApiService
+) {
     fun getStory(token: String): LiveData<PagingData<ListStoryItem>> {
         return Pager(
             config = PagingConfig(

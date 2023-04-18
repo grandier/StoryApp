@@ -11,93 +11,93 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
-    <ImageView
-        android:id="@+id/previewImageView"
-        android:layout_width="0dp"
-        android:layout_height="400dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="8dp"
-        android:padding="5dp"
-        android:background="@drawable/baseline_stroke"
-        app:layout_constraintBottom_toTopOf="@+id/camerax_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_placeholder"
-        android:contentDescription="@string/image" />
+        <ImageView
+            android:id="@+id/previewImageView"
+            android:layout_width="0dp"
+            android:layout_height="400dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/baseline_stroke"
+            android:contentDescription="@string/image"
+            android:padding="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/camerax_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_placeholder" />
 
-    <Button
-        android:id="@+id/camerax_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:scaleType="fitCenter"
-        android:text="@string/camera_x"
-        app:layout_constraintBottom_toTopOf="@+id/ti_layout"
-        app:layout_constraintEnd_toStartOf="@+id/gallery_button"
-        app:layout_constraintStart_toStartOf="@+id/previewImageView"
-        app:layout_constraintTop_toBottomOf="@+id/previewImageView" />
+        <Button
+            android:id="@+id/camerax_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:scaleType="fitCenter"
+            android:text="@string/camera_x"
+            app:layout_constraintBottom_toTopOf="@+id/ti_layout"
+            app:layout_constraintEnd_toStartOf="@+id/gallery_button"
+            app:layout_constraintStart_toStartOf="@+id/previewImageView"
+            app:layout_constraintTop_toBottomOf="@+id/previewImageView" />
 
-    <Button
-        android:id="@+id/gallery_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/gallery"
-        app:layout_constraintBottom_toBottomOf="@+id/camerax_button"
-        app:layout_constraintEnd_toEndOf="@+id/previewImageView"
-        app:layout_constraintStart_toEndOf="@+id/camerax_button"
-        app:layout_constraintTop_toTopOf="@+id/camerax_button" />
+        <Button
+            android:id="@+id/gallery_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/gallery"
+            app:layout_constraintBottom_toBottomOf="@+id/camerax_button"
+            app:layout_constraintEnd_toEndOf="@+id/previewImageView"
+            app:layout_constraintStart_toEndOf="@+id/camerax_button"
+            app:layout_constraintTop_toTopOf="@+id/camerax_button" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ti_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@id/previewImageView"
-        app:layout_constraintStart_toStartOf="@+id/previewImageView"
-        android:hint="@string/description"
-        app:layout_constraintTop_toBottomOf="@id/camerax_button">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ti_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/description"
+            app:layout_constraintEnd_toEndOf="@id/previewImageView"
+            app:layout_constraintStart_toStartOf="@+id/previewImageView"
+            app:layout_constraintTop_toBottomOf="@id/camerax_button">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_description"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:maxLines="1"
-            android:inputType="text"
-            app:layout_constraintStart_toStartOf="@+id/camerax_button"
-            app:layout_constraintTop_toBottomOf="@id/camerax_button" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ed_description"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:inputType="text"
+                android:maxLines="1"
+                app:layout_constraintStart_toStartOf="@+id/camerax_button"
+                app:layout_constraintTop_toBottomOf="@id/camerax_button" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/upload_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:enabled="false"
-        android:maxLines="@integer/material_motion_duration_medium_2"
-        android:text="@string/upload"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/ti_layout"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/ti_layout"
-        app:layout_constraintTop_toBottomOf="@id/ti_layout"
-        app:layout_constraintVertical_bias="0.338" />
+        <Button
+            android:id="@+id/upload_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:maxLines="@integer/material_motion_duration_medium_2"
+            android:text="@string/upload"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/ti_layout"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/ti_layout"
+            app:layout_constraintTop_toBottomOf="@id/ti_layout"
+            app:layout_constraintVertical_bias="0.338" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        tools:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

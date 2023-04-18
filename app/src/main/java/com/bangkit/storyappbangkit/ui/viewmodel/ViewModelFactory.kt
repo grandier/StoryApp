@@ -6,7 +6,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.bangkit.storyappbangkit.data.di.Injection
 import com.bangkit.storyappbangkit.data.local.Session
 
-class ViewModelFactory(private val pref: Session, private val context: Context) : ViewModelProvider.NewInstanceFactory() {
+class ViewModelFactory(private val pref: Session, private val context: Context) :
+    ViewModelProvider.NewInstanceFactory() {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {

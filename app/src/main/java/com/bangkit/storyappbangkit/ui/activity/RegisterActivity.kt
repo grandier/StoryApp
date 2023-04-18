@@ -3,20 +3,18 @@ package com.bangkit.storyappbangkit.ui.activity
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
-import com.bangkit.storyappbangkit.R
 import com.bangkit.storyappbangkit.data.local.Session
 import com.bangkit.storyappbangkit.databinding.ActivityRegisterBinding
 import com.bangkit.storyappbangkit.ui.customview.ButtonRegister
 import com.bangkit.storyappbangkit.ui.customview.EmailEditText
 import com.bangkit.storyappbangkit.ui.customview.NameEditText
 import com.bangkit.storyappbangkit.ui.customview.PasswordEditText
-import com.bangkit.storyappbangkit.ui.viewmodel.LoginViewModel
 import com.bangkit.storyappbangkit.ui.viewmodel.RegisterViewModel
 import com.bangkit.storyappbangkit.ui.viewmodel.ViewModelFactory
 
@@ -70,7 +68,8 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         emailEditText.addTextChangedListener { text ->
-            correctEmail = !text.isNullOrEmpty() && LoginActivity.emailRegex.matches(text.toString())
+            correctEmail =
+                !text.isNullOrEmpty() && LoginActivity.emailRegex.matches(text.toString())
             setLoginButtonEnable()
         }
 
@@ -84,21 +83,25 @@ class RegisterActivity : AppCompatActivity() {
             setLoginButtonEnable()
         }
 
-        registerButton.setOnClickListener{
-            registerViewModel.register(nameEditText.text.toString(), emailEditText.text.toString(), passwordEditText.text.toString())
+        registerButton.setOnClickListener {
+            registerViewModel.register(
+                nameEditText.text.toString(),
+                emailEditText.text.toString(),
+                passwordEditText.text.toString()
+            )
         }
 
-        registerViewModel.acceptance.observe(this){
-            if (it){
+        registerViewModel.acceptance.observe(this) {
+            if (it) {
                 goToLogin(emailEditText.text.toString(), passwordEditText.text.toString())
             }
         }
 
-        registerViewModel.message.observe(this){
+        registerViewModel.message.observe(this) {
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         }
 
-        registerViewModel.isLoading.observe(this){
+        registerViewModel.isLoading.observe(this) {
             showProgressBar(it)
         }
 

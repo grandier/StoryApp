@@ -5,13 +5,10 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.bangkit.storyappbangkit.data.remote.api.ApiService
 import com.bangkit.storyappbangkit.data.remote.model.ListStoryItem
-import kotlinx.coroutines.suspendCancellableCoroutine
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
-class StoryPagingSource(private val apiService: ApiService, private val token: String) : PagingSource<Int, ListStoryItem>() {
+class StoryPagingSource(private val apiService: ApiService, private val token: String) :
+    PagingSource<Int, ListStoryItem>() {
     private companion object {
         const val INITIAL_PAGE_INDEX = 1
     }
@@ -32,7 +29,6 @@ class StoryPagingSource(private val apiService: ApiService, private val token: S
             return LoadResult.Error(exception)
         }
     }
-
 
 
     override fun getRefreshKey(state: PagingState<Int, ListStoryItem>): Int? {

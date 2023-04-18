@@ -4,8 +4,6 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -18,9 +16,7 @@ import com.bangkit.storyappbangkit.ui.customview.ButtonLogin
 import com.bangkit.storyappbangkit.ui.customview.EmailEditText
 import com.bangkit.storyappbangkit.ui.customview.PasswordEditText
 import com.bangkit.storyappbangkit.ui.viewmodel.LoginViewModel
-
 import com.bangkit.storyappbangkit.ui.viewmodel.ViewModelFactory
-import com.google.android.material.color.MaterialColors.ALPHA_FULL
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -78,21 +74,20 @@ class LoginActivity : AppCompatActivity() {
             loginViewModel.login(emailEditText.text.toString(), passwordEditText.text.toString())
         }
 
-        loginViewModel.message.observe(this){
-            if (it == "Failure"){
+        loginViewModel.message.observe(this) {
+            if (it == "Failure") {
                 Toast.makeText(this, R.string.login_error, Toast.LENGTH_SHORT).show()
-            }
-            else{
+            } else {
                 Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
             }
         }
 
-        loginViewModel.isLoading.observe(this){
+        loginViewModel.isLoading.observe(this) {
             showLoading(it)
         }
 
-        loginViewModel.acceptance.observe(this){
-            if (it){
+        loginViewModel.acceptance.observe(this) {
+            if (it) {
                 val i = Intent(this, MainActivity::class.java)
                 startActivity(i)
                 finish()
@@ -110,7 +105,7 @@ class LoginActivity : AppCompatActivity() {
         loginButton.isEnabled = correctEmail && correctPassword
     }
 
-     private fun showLoading(state: Boolean) {
+    private fun showLoading(state: Boolean) {
         if (state) {
             binding.progressBar.visibility = View.VISIBLE
         } else {
@@ -118,7 +113,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun useAnimation(){
+    private fun useAnimation() {
         val objectView = listOf(
             binding.ivApplogo,
             binding.tvLogin,
@@ -138,7 +133,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    companion object{
+    companion object {
         private const val ANIMATION_DURATION = 100L
         private const val ALPHA_FULL = 1.0f
         val emailRegex: Regex = Regex("^\\w+([.-]?\\w+)*@\\w+([.-]?\\w+)*(\\.\\w{2,3})+\$")

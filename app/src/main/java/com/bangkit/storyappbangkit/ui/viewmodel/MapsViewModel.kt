@@ -44,7 +44,7 @@ class MapsViewModel(
                 _isLoading.value = false
                 if (response.isSuccessful) {
                     _message.value = response.body()?.message as String
-                    _listStory.value = response.body()?.listStory as List<ListStoryItem>?
+                    _listStory.value = response.body()?.listStory
                     _acceptance.value = true
                 } else {
                     _message.value = response.message()

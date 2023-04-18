@@ -2,9 +2,7 @@ package com.bangkit.storyappbangkit.ui.customview
 
 import android.content.Context
 import android.graphics.Canvas
-import android.opengl.ETC1.isValid
 import android.text.Editable
-import android.text.InputType
 import android.text.TextWatcher
 import android.text.method.PasswordTransformationMethod
 import android.util.AttributeSet
@@ -38,7 +36,7 @@ class PasswordEditText : AppCompatEditText, View.OnTouchListener {
 
     private val pattern: Pattern = Pattern.compile(".{8,}")
 
-    private fun isValid (s: CharSequence) : Boolean{
+    private fun isValid(s: CharSequence): Boolean {
         return pattern.matcher(s).matches()
     }
 
@@ -55,7 +53,7 @@ class PasswordEditText : AppCompatEditText, View.OnTouchListener {
             }
 
             override fun afterTextChanged(s: Editable?) {
-                if(s?.let { isValid(it) } == false && s.isNotEmpty()){
+                if (s?.let { isValid(it) } == false && s.isNotEmpty()) {
                     error = resources.getString(R.string.password_min_length)
                 }
             }

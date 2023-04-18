@@ -2,9 +2,7 @@ package com.bangkit.storyappbangkit.ui.customview
 
 import android.content.Context
 import android.graphics.Canvas
-import android.opengl.ETC1.isValid
 import android.text.Editable
-import android.text.InputType
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.MotionEvent
@@ -30,7 +28,7 @@ class EmailEditText : AppCompatEditText, View.OnTouchListener {
 
     private val emailRegex: Regex = Regex("^\\w+([.-]?\\w+)*@\\w+([.-]?\\w+)*(\\.\\w{2,3})+\$")
 
-    private fun isValid (s: CharSequence) : Boolean{
+    private fun isValid(s: CharSequence): Boolean {
         return emailRegex.matches(s)
     }
 
@@ -53,7 +51,7 @@ class EmailEditText : AppCompatEditText, View.OnTouchListener {
             }
 
             override fun afterTextChanged(s: Editable?) {
-                if(s?.let { isValid(it) } == false && s.isNotEmpty()){
+                if (s?.let { isValid(it) } == false && s.isNotEmpty()) {
                     error = resources.getString(R.string.invalid_email)
                 }
             }

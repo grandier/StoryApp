@@ -48,5 +48,6 @@
     <string name="error">Error</string>
     <string name="success">Success</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="imagedetail">ImageDetail</string>
 
 </resources>

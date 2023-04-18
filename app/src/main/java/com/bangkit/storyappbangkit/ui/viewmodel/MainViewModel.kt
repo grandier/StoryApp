@@ -1,6 +1,5 @@
 package com.bangkit.storyappbangkit.ui.viewmodel
 
-import android.content.Context
 import androidx.lifecycle.*
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
@@ -14,7 +13,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainViewModel(private val pref: Session, private val storyRepository: StoryRepository) : ViewModel() {
+class MainViewModel(private val pref: Session, private val storyRepository: StoryRepository) :
+    ViewModel() {
 
     fun getToken(): LiveData<String> {
         return pref.getToken().asLiveData()
@@ -37,7 +37,7 @@ class MainViewModel(private val pref: Session, private val storyRepository: Stor
 
     fun getAllStories(token: String) {
         _isLoading.value = true
-        val client = ApiConfig.getApiService().getAllStories("Bearer $token", 1, 100,)
+        val client = ApiConfig.getApiService().getAllStories("Bearer $token", 1, 100)
         client.enqueue(object : Callback<GetStory> {
             override fun onResponse(
                 call: Call<GetStory>,
@@ -46,7 +46,7 @@ class MainViewModel(private val pref: Session, private val storyRepository: Stor
                 _isLoading.value = false
                 if (response.isSuccessful) {
                     _message.value = response.body()?.message as String
-                    _listStory.value = response.body()?.listStory as List<ListStoryItem>?
+                    _listStory.value = response.body()?.listStory
                 } else {
                     _message.value = response.message()
                     _acceptance.value = false

@@ -1,10 +1,10 @@
 package com.bangkit.storyappbangkit.ui.activity.stories
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import com.bangkit.storyappbangkit.R
 import com.bangkit.storyappbangkit.data.remote.model.ListStoryItem
 import com.bangkit.storyappbangkit.databinding.ActivityDetailStoryBinding
@@ -14,7 +14,6 @@ import com.bumptech.glide.Glide
 class DetailStoryActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailStoryBinding
-//    private lateinit var detailStories: ListStoryItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

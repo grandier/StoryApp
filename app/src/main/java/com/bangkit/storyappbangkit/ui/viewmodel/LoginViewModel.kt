@@ -1,25 +1,16 @@
 package com.bangkit.storyappbangkit.ui.viewmodel
 
 import android.content.ContentValues.TAG
-import android.content.Intent
-import android.provider.Settings.Global.getString
 import android.util.Log
-import android.view.View
-import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.*
-import com.bangkit.storyappbangkit.R
 import com.bangkit.storyappbangkit.data.local.Session
 import com.bangkit.storyappbangkit.data.remote.api.ApiConfig
 import com.bangkit.storyappbangkit.data.remote.model.Login
-import com.bangkit.storyappbangkit.data.remote.model.LoginResult
-import com.bangkit.storyappbangkit.ui.activity.LoginActivity
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.http.*
 
 class LoginViewModel(private val pref: Session) : ViewModel() {
 
@@ -40,9 +31,9 @@ class LoginViewModel(private val pref: Session) : ViewModel() {
     private val _message = MutableLiveData<String>()
     val message: LiveData<String> = _message
 
-    init{
+    init {
         _acceptance.value = false
-        if(pref.getToken().asLiveData().value != null){
+        if (pref.getToken().asLiveData().value != null) {
             _acceptance.value = true
         }
     }

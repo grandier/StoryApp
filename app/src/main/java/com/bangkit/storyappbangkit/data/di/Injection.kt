@@ -2,7 +2,6 @@ package com.bangkit.storyappbangkit.data.di
 
 import android.content.Context
 import com.bangkit.storyappbangkit.data.database.StoryDatabase
-import com.bangkit.storyappbangkit.data.local.Session
 import com.bangkit.storyappbangkit.data.paging.StoryRepository
 import com.bangkit.storyappbangkit.data.remote.api.ApiConfig
 

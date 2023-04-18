@@ -4,32 +4,27 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Resources
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.bangkit.storyappbangkit.R
 import com.bangkit.storyappbangkit.data.local.Session
 import com.bangkit.storyappbangkit.data.remote.model.ListStoryItem
 import com.bangkit.storyappbangkit.databinding.ActivityMapsBinding
-
-import com.google.android.gms.maps.CameraUpdateFactory
+import com.bangkit.storyappbangkit.ui.viewmodel.MapsViewModel
+import com.bangkit.storyappbangkit.ui.viewmodel.ViewModelFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
-import com.bangkit.storyappbangkit.ui.viewmodel.MainViewModel
-import com.bangkit.storyappbangkit.ui.viewmodel.MapsViewModel
-import com.bangkit.storyappbangkit.ui.viewmodel.ViewModelFactory
 import com.google.android.gms.maps.model.MapStyleOptions
+import com.google.android.gms.maps.model.MarkerOptions
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -52,7 +47,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mapsViewModel.getToken().observe(this) { token ->
             if (token.isNotEmpty()) {
                 getStoryMap(token)
-            } else if(token.isEmpty()) {
+            } else if (token.isEmpty()) {
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -65,7 +60,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         }
 
-        mapsViewModel.message.observe(this){message ->
+        mapsViewModel.message.observe(this) { message ->
             if (message == "Failure") {
                 Toast.makeText(this, "Failed to get data", Toast.LENGTH_SHORT).show()
             } else {
@@ -73,7 +68,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             }
         }
 
-        mapsViewModel.acceptance.observe(this){acceptance ->
+        mapsViewModel.acceptance.observe(this) { acceptance ->
             if (acceptance) {
                 Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
             } else {

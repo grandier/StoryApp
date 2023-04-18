@@ -1,6 +1,5 @@
 package com.bangkit.storyappbangkit.ui.utils
 
-import android.app.Activity
 import android.content.ContentResolver
 import android.content.Context
 import android.graphics.Bitmap
@@ -8,9 +7,6 @@ import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.net.Uri
 import android.os.Environment
-import android.view.View
-import android.widget.Toast
-import androidx.core.content.FileProvider
 import com.bangkit.storyappbangkit.R
 import java.io.*
 import java.text.SimpleDateFormat
@@ -39,15 +35,14 @@ fun createFile(context: Context): File {
 
 fun rotateBitmap(bitmap: Bitmap, isBackCamera: Boolean = false): Bitmap {
     val matrix = Matrix()
-    return if (isBackCamera) {
-        matrix.postRotate(90f)
-        Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
-    } else {
-        matrix.postRotate(-90f)
+    val rotation = if (isBackCamera) 90f else -90f
+    matrix.postRotate(rotation)
+    if (!isBackCamera) {
         matrix.postScale(-1f, 1f, bitmap.width / 2f, bitmap.height / 2f)
-        Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
     }
+    return Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
 }
+
 
 fun uriToFile(selectedImg: Uri, context: Context): File {
     val contentResolver: ContentResolver = context.contentResolver
@@ -83,3 +78,23 @@ fun reduceFileImage(file: File): File {
     return file
 }
 
+fun rotateFile(file: File, isBackCamera: Boolean = false) {
+    val matrix = Matrix()
+    val bitmap = BitmapFactory.decodeFile(file.path)
+
+    // Apply rotation and scaling transformations to the bitmap
+    val rotation = if (isBackCamera) 90f else -90f
+    matrix.postRotate(rotation)
+    if (!isBackCamera) {
+        matrix.postScale(-1f, 1f, bitmap.width / 2f, bitmap.height / 2f)
+    }
+
+    // Create a new rotated bitmap without modifying the original file
+    val rotatedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
+
+    // Save the rotated bitmap to the original file
+    val fileOutputStream = FileOutputStream(file)
+    rotatedBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream)
+    fileOutputStream.flush()
+    fileOutputStream.close()
+}
