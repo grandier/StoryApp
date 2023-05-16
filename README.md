@@ -28,5 +28,12 @@ Run the app on an emulator or physical device.
 ### Author
 This app is created by [Kemas Rafly Omar Thoriq](https://github.com/grandier) as part of the [Dicoding Android Intermediate class.](https://www.dicoding.com/academies/352)
 
-License
+### License
 This project is licensed under the MIT License.
+
+### Demo
+
+
+
+https://github.com/grandier/StoryApp/assets/75106952/a99d845a-6725-4f9c-8e60-a6d2fa9df162
+
